@@ -8,7 +8,7 @@ namespace ToDoNetFrameworkBackend.Models
     public class TaskToDo
     {
         public int Id { get; set; }
-        public string Descriptio { get; set; }
+        public string Description { get; set; }
         public DateTime CreationDate { get; set; }
         public bool IsCompleted { get; set; }
     }

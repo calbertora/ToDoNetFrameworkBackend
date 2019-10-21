@@ -17,12 +17,15 @@ namespace ToDoNetFrameworkBackend.Controllers
         {
             this.repository = new Repository();
         }
+
+        [HttpGet]
         public IEnumerable<TaskToDo> Get()
         {
             return repository.GetAllTask();
         }
 
-        public void Post(TaskToDo task)
+        [HttpPost]
+        public void Post([FromBody] TaskToDo task)
         {
             repository.InsertTask(task);
         }
