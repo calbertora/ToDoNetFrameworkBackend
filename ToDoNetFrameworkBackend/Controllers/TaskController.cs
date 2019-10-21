@@ -11,16 +11,20 @@ namespace ToDoNetFrameworkBackend.Controllers
 {
     public class TaskController : ApiController
     {
-        private Repository reposiotry;
+        private Repository repository;
 
+        public TaskController()
+        {
+            this.repository = new Repository();
+        }
         public IEnumerable<TaskToDo> Get()
         {
-            return reposiotry.GetAllTask();
+            return repository.GetAllTask();
         }
 
         public void Post(TaskToDo task)
         {
-            reposiotry.InsertTask(task);
+            repository.InsertTask(task);
         }
     }
 }
