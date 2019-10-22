@@ -24,10 +24,36 @@ namespace ToDoNetFrameworkBackend.Controllers
             return repository.GetAllTask();
         }
 
+        [HttpGet]
+        public TaskToDo Get(int id)
+        {
+            return repository.Get(id);
+        }
+
         [HttpPost]
         public void Post([FromBody] TaskToDo task)
         {
             repository.InsertTask(task);
+        }
+
+        public IHttpActionResult Put([FromBody] TaskToDo task)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    repository.Update(task);
+                    return Ok("The User has been updated");
+                }
+                else
+                {
+                    return BadRequest("Couldn't update");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
         }
     }
 }
